@@ -25,6 +25,7 @@
 </head>
 
 <body>
+    {!! setting('site.ga_code') !!}
     <!--? Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -119,7 +120,7 @@
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p>Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do eiusmod tem.</p>
+                                        <p>{{ setting('site.description') }}</p>
                                 </div>
                                 </div>
                             </div>
@@ -179,7 +180,7 @@
                             <!-- social -->
                             <div class="footer-social">
                                 <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.facebook.com/{{$fb_id}}"><i class="fab fa-facebook-f"></i></a>
+                                <a href="{{ setting('site.fb_url') }}"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-behance"></i></a>
                                 <a href="#"><i class="fas fa-globe"></i></a>
                             </div>
