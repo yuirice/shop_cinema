@@ -22,10 +22,10 @@ class ArticleFactory extends Factory
     public function definition()
     {
         return [
-            'cgy_id' => 1,
+            'cgy_id' => rand(1,3),
             'title' => $this->faker->realText(20),
             'pic' =>
-            'images/blog-post-' . rand(1, 4) . '.jpg',
+            'images/blog_' . rand(1, 4) . '.png',
             'content_small' => $this->faker->realText(50),
             'content' => $this->faker->realText(500),
             'author_id' => rand(1, 3),

@@ -16,6 +16,6 @@ class ArticleSeeder extends Seeder
     {
         ArticleTag::truncate();
         Article::truncate();
-        Article::factory()->count(10)->create();
+        Article::factory()->count(100)->create();
     }
 }

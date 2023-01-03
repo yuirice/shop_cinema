@@ -20,7 +20,7 @@ Route::namespace('App\Http\Controllers')->group(function(){
     Route::get('/shop', 'SiteController@shop');
     Route::get('/items/{item}','SiteController@productDetail');
     Route::get('/blog','SiteController@blog');
-    Route::get('/blog-detail','SiteController@blogDetail');
+    Route::get('/blog-detail/{article}','SiteController@blogDetail');
     Route::get('/contact','SiteController@contact');
     Route::post('/contacts','SiteController@storeContact');
 });

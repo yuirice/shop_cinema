@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cgy;
 use App\Models\Item;
 use App\Models\Contact;
 use App\Models\Element;
@@ -31,7 +32,11 @@ class SiteController extends Controller
     }
 
     public function blog(){
-        return view('blog');
+        //取得最新消息的所有文章
+        $cgy = Cgy::find(1);
+        $articles_news = $cgy->articles;
+        $cgies = Cgy::get();
+        return view('blog',compact('cgy','articles_news','cgies'));
     }
 
     public function blogDetail(){
