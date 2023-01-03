@@ -22,6 +22,7 @@ Route::namespace('App\Http\Controllers')->group(function(){
     Route::get('/blog','SiteController@blog');
     Route::get('/blog-detail','SiteController@blogDetail');
     Route::get('/contact','SiteController@contact');
+    Route::post('/contacts','SiteController@storeContact');
 });
 
 Route::get('picArray',function(){

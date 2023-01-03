@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Contact;
 use App\Models\Element;
 use Illuminate\Http\Request;
 
@@ -40,4 +41,16 @@ class SiteController extends Controller
     public function contact(){
         return view('contact');
     }
+
+    //儲存聯絡單
+    public function storeContact(Request $request){
+        $contact = Contact::create($request->only('subject','email','message','mobile'));
+        if ($contact){
+            print('儲存成功');
+        }else{
+            print('儲存失敗');
+        }
+        return redirect('/admin/contacts');
+    }
+
 }
