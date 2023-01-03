@@ -1,3 +1,6 @@
+@extends('layouts.master')
+
+@section('content')
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -223,3 +226,4 @@
 
 </body>
 </html>
+@endsection
