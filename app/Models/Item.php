@@ -21,6 +21,12 @@ class Item extends Model
         }else{
             return null;
         }
-        
+    }
+
+    //計算屬性的示範
+    public function getPicsArrayAttribute(){
+       
+        $data = json_decode($this->pics,true);
+        return $data;
     }
 }

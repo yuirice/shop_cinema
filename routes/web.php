@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Item;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\Route;
 
@@ -17,10 +18,15 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('App\Http\Controllers')->group(function(){
     Route::get('/', 'SiteController@index');
     Route::get('/shop', 'SiteController@shop');
-    Route::get('/items/{id}','SiteController@productDetail');
+    Route::get('/items/{item}','SiteController@productDetail');
     Route::get('/blog','SiteController@blog');
     Route::get('/blog-detail','SiteController@blogDetail');
     Route::get('/contact','SiteController@contact');
+});
+
+Route::get('picArray',function(){
+    $item = Item::find(13);
+    dd($item->picsArray);
 });
 
 

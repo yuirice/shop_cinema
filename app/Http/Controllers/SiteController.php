@@ -25,8 +25,8 @@ class SiteController extends Controller
         return view('shop',compact('items_new_product','items_works','items_teach'));
     }
 
-    public function productDetail($id){
-        return view('product-detail');
+    public function productDetail(Item $item){
+        return view('product-detail',compact('item'));
     }
 
     public function blog(){
