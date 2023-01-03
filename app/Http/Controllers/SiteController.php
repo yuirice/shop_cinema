@@ -19,6 +19,25 @@ class SiteController extends Controller
     }
 
     public function shop(){
-        return view('shop');
+        $items_new_product = Item::where('cgy_id',1)->where('enabled',true)->orderBy('sort','asc')->get();
+        $items_works = Item::where('cgy_id',2)->where('enabled',true)->orderBy('sort','asc')->get();
+        $items_teach = Item::where('cgy_id',3)->where('enabled',true)->orderBy('sort','asc')->get();
+        return view('shop',compact('items_new_product','items_works','items_teach'));
+    }
+
+    public function productDetail($id){
+        return view('product-detail');
+    }
+
+    public function blog(){
+        return view('blog');
+    }
+
+    public function blogDetail(){
+        return view('blog-detail');
+    }
+
+    public function contact(){
+        return view('contact');
     }
 }
