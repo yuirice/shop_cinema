@@ -31,7 +31,7 @@
                             <img class="card-img rounded-0" src="{{ asset($article->pic) }}" alt="{{ $article->title }}">
                             <a href="#" class="blog_item_date">
                                 <h3>{{ $article->created_at->day }}</h3>
-                                <p>{{ $article->created_at->month }}</p>
+                                <p>{{ $article->created_at->locale('zh_TW')->isoFormat('MMM'); }}</p>
                             </a>
                         </div>
 
@@ -48,8 +48,9 @@
                     </article>
                     @endforeach
                     
+                    {{ $articles_news->links() }}
 
-                    <nav class="blog-pagination justify-content-center d-flex">
+                    {{-- <nav class="blog-pagination justify-content-center d-flex">
                         <ul class="pagination">
                             <li class="page-item">
                                 <a href="#" class="page-link" aria-label="Previous">
@@ -68,7 +69,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </nav>
+                    </nav> --}}
                 </div>
             </div>
             <div class="col-lg-4">

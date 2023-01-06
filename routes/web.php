@@ -2,6 +2,7 @@
 
 use App\Models\Item;
 use TCG\Voyager\Facades\Voyager;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,18 @@ Route::get('picArray',function(){
     $item = Item::find(13);
     dd($item->picsArray);
 });
+
+Route::get('getlocale',function(){
+    App::setLocale('zh_TW');
+    return App::getLocale();
+});
+
+Route::get('getpwd',function(){
+    App::setLocale('zh_TW');
+    return __('Your password has been reset!');
+});
+
+Route::view('testing','test');
 
 
 

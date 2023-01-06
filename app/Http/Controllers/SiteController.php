@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cgy;
 use App\Models\Item;
+use App\Models\Article;
 use App\Models\Contact;
 use App\Models\Element;
 use Illuminate\Http\Request;
@@ -34,7 +35,8 @@ class SiteController extends Controller
     public function blog(){
         //取得最新消息的所有文章
         $cgy = Cgy::find(1);
-        $articles_news = $cgy->articles;
+        //$articles_news = $cgy->articles()->paginate(5);
+        $articles_news = Article::where('cgy_id',1)->paginate(5);
         $cgies = Cgy::get();
         return view('blog',compact('cgy','articles_news','cgies'));
     }
