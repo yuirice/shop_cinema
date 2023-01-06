@@ -53,9 +53,9 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('additem',function(){
     $item = Item::find(1);
     \Cart::session(1)->add([
-        'id' => 2,
+        'id' => 4,
         'name' =>$item->title,
-        'price' => $item->price_new,
+        'price' => $item->taxPrice,
         'quantity' => 1,
         'attributes' => [],
         'associatedModel' => $item
@@ -65,12 +65,17 @@ Route::get('additem',function(){
 
 Route::get('updateitem',function(){
     $item = Item::find(1);
-    \Cart::session(1)->update(1,[
-        'quantity' => -3,
-        'attributes' => [],
-        'associatedModel' => $item
-    ]);
-    return '已更新購物車';
+    if(!\Cart::session(1)->isEmpty()){
+        \Cart::session(1)->update(1,[
+            'quantity' => -3,
+            'attributes' => [],
+            'associatedModel' => $item
+        ]);
+        return '已更新購物車';
+    }else{
+        return '購物車為空';
+    }
+   
 });
 
 Route::get('removeitem',function(){
@@ -82,4 +87,29 @@ Route::get('removeitem',function(){
 Route::get('getcart',function(){
     $items = \Cart::session(1)->getContent();
     dd($items);
+});
+
+Route::get('gettotalquantity',function(){
+    $cartTotalQuantity = \Cart::session(1)->getTotalQuantity();
+    dd($cartTotalQuantity);
+});
+
+Route::get('gettotal',function(){
+    $total = \Cart::session(1)->getTotal();
+    dd($total);
+});
+
+Route::get('clearcart',function(){
+    \Cart::session(1)->clear();
+    return '已清除購物車';
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });

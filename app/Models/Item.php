@@ -29,4 +29,8 @@ class Item extends Model
         $data = json_decode($this->pics,true);
         return $data;
     }
+
+    public function getTaxPriceAttribute(){
+        return $this->price_new * 1.05;
+    }
 }
