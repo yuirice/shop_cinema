@@ -25,6 +25,8 @@ Route::namespace('App\Http\Controllers')->group(function(){
     Route::get('/blog-detail/{article}','SiteController@blogDetail');
     Route::get('/contact','SiteController@contact');
     Route::post('/contacts','SiteController@storeContact');
+    Route::get('addcart/{item}/{quantity}','SiteController@addCart');
+    Route::get('cart','SiteController@cartPage');
 });
 
 Route::get('picArray',function(){
@@ -50,18 +52,21 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('additem',function(){
-    $item = Item::find(1);
-    \Cart::session(1)->add([
-        'id' => 4,
-        'name' =>$item->title,
-        'price' => $item->taxPrice,
-        'quantity' => 1,
-        'attributes' => [],
-        'associatedModel' => $item
-    ]);
-    return '已加入購物車中';
-});
+// Route::get('additem',function(){
+//     $item = Item::find(1);
+//     \Cart::session(1)->add([
+//         'id' => 4,
+//         'name' =>$item->title,
+//         'price' => $item->taxPrice,
+//         'quantity' => 1,
+//         'attributes' => [],
+//         'associatedModel' => $item
+//     ]);
+//     return '已加入購物車中';
+// });
+
+
+
 
 Route::get('updateitem',function(){
     $item = Item::find(1);
