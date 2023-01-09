@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Item;
+use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -117,4 +118,34 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::get('/storesession',function(Request $request){
+    //session(['name'=>'zack']);
+    $request->session()->put('name','zack2');
+    $request->session()->put('msg','it is done');
+    $request->session()->put('price',1000);
+    $request->session()->put('data',['name' =>'PS5','price' => 15800]);
+    return 'Session 已儲存';
+});
+
+Route::get('/flashsession',function(Request $request){
+    //session(['name'=>'zack']);
+    $request->session()->flash('status','更新成功');
+    return 'Session 已儲存';
+});
+
+
+Route::get('/getsession',function(Request $request){
+    //$data = session('name','jack');
+    //$request->session()->get('name','jack2');
+    //$data = $request->session()->pull('price');
+    $data = $request->session()->get('status','沒找到');
+    return $data;
+});
+
+Route::get('/deletesession',function(Request $request){
+    //$request->session()->forget('msg');
+    $request->session()->flush();
+    return $request->session()->all();
 });

@@ -15,6 +15,7 @@
             </div>
         </div>
     </div>
+    @include('flash::message')Message
     <!--? Hero Area End-->
     <!-- ================ contact section start ================= -->
     <section class="contact-section">
