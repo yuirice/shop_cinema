@@ -80,12 +80,17 @@ class SiteController extends Controller
     //儲存聯絡單
     public function storeContact(Request $request)
     {
-        $contact = Contact::create($request->only('subject', 'email', 'message', 'mobile'));
+        $contact = Contact::create($request->only('subject', 'email', 'message', 'mobile','name'));
         if ($contact) {
             print('儲存成功');
+            flash('聯絡單建立完成!!')->success()->important(); //綠色框，外加關閉按鈕
+            //flash('聯絡單建立完成!!')->success(); //綠色框
+            //flash('聯絡單建立完成!!')->error(); //紅色框
+            //flash('聯絡單建立完成!!')->overlay();
         } else {
             print('儲存失敗');
+            flash('聯絡單建立失敗!!')->error(); //紅色框
         }
-        return redirect('/admin/contacts');
+        return redirect('/contact');
     }
 }

@@ -45,7 +45,7 @@ Route::get('getpwd',function(){
     return __('Your password has been reset!');
 });
 
-Route::view('testing','test');
+
 
 
 
