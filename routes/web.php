@@ -149,3 +149,7 @@ Route::get('/deletesession',function(Request $request){
     $request->session()->flush();
     return $request->session()->all();
 });
+
+Route::get('/feedback', function () {
+    return view('feedback');
+});
