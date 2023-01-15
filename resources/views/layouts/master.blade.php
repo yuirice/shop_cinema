@@ -50,9 +50,9 @@
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu d-none d-lg-block">
-                            <nav>          
-                                {{ menu('frontend','my_menu') }}                                      
-                                {{-- <ul id="navigation">  
+                            <nav>
+                                {{ menu('frontend','my_menu') }}
+                                {{-- <ul id="navigation">
                                     <li><a href="{{ url('/') }}">Home</a></li>
                                     <li><a href="{{ url('/shop') }}">shop</a></li>
                                     <li><a href="about.html">about</a></li>
@@ -82,14 +82,15 @@
                             </nav>
                         </div>
                         <!-- Header Right -->
-                        <div class="header-right">
+                        {{ menu('right_up','right_menu') }}
+                        {{-- <div class="header-right">
                             <ul>
                                 <li>
                                     <div class="nav-search search-switch">
                                         <span class="flaticon-search"></span>
                                     </div>
                                 </li>
-                                <li> <a href="login.html"><span class="flaticon-user"></span></a></li>
+                                <li> <a href="{{ url('/login') }}"><span class="flaticon-user"></span></a></li>
                                 <li><a href="cart.html"><span class="flaticon-shopping-cart"></span></a> </li>
                             </ul>
                         </div>
@@ -100,7 +101,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Header End -->
     </header>
     <main>
@@ -173,7 +174,7 @@
                         <div class="footer-copy-right">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
   Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>                  
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-4 col-md-5">
@@ -226,15 +227,15 @@
     <script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
     <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('js/jquery.sticky.js') }}"></script>
-    
+
     <!-- contact js -->
     <script src="{{ asset('js/contact.js') }}"></script>
     <script src="{{ asset('js/jquery.form.js') }}"></script>
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/mail-script.js') }}"></script>
     <script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
-    
-    <!-- Jquery Plugins, main Jquery -->	
+
+    <!-- Jquery Plugins, main Jquery -->
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script>

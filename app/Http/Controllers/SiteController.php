@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cgy;
-use App\Models\Item;
 use App\Models\Article;
+use App\Models\Cgy;
 use App\Models\Contact;
 use App\Models\Element;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +18,7 @@ class SiteController extends Controller
         $arrivals = Item::where('cgy_id', 2)->where('enabled', true)->orderBy('sort', 'asc')->get();
         $images = Element::where('page', 'index')->where('position', 'images')->orderBy('sort', 'asc')->take(4)->get();
         $new_product_top = Element::where('page', 'index')->where('position', 'new_product_top')->orderBy('sort', 'asc')->first();
-        $new_products =  Item::where('cgy_id', 1)->where('enabled', true)->orderBy('sort', 'asc')->get();
+        $new_products = Item::where('cgy_id', 1)->where('enabled', true)->orderBy('sort', 'asc')->get();
         $items_row3 = Element::where('page', 'index')->where('position', 'row3')->orderBy('sort', 'asc')->take(3)->get();
         return view('index', compact('sliders', 'arrivals', 'images', 'new_product_top', 'new_products', 'items_row3'));
     }
@@ -60,7 +60,7 @@ class SiteController extends Controller
     {
         $cart = \Cart::session(Auth::user()->id)->getContent();
         $total = \Cart::session(Auth::user()->id)->getTotal();
-        return view('cart',compact('cart','total'));
+        return view('cart', compact('cart', 'total'));
     }
 
     public function addCart(Request $request, Item $item, $quantity)
@@ -72,7 +72,7 @@ class SiteController extends Controller
             'price' => $item->price_new,
             'quantity' => $quantity,
             'attributes' => [],
-            'associatedModel' => $item
+            'associatedModel' => $item,
         ]);
         return redirect(url('cart'));
     }
@@ -80,7 +80,7 @@ class SiteController extends Controller
     //儲存聯絡單
     public function storeContact(Request $request)
     {
-        $contact = Contact::create($request->only('subject', 'email', 'message', 'mobile','name'));
+        $contact = Contact::create($request->only('subject', 'email', 'message', 'mobile', 'name'));
         if ($contact) {
             print('儲存成功');
             flash('聯絡單建立完成!!')->success()->important(); //綠色框，外加關閉按鈕
