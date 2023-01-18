@@ -111,8 +111,8 @@ h4,
 h5,
 h6 {
     font-family: 'Josefin Sans', sans-serif;
-    color: #0b1c39;
-    margin-top: 0px;
+    color: #fd5725;
+    margin-top: 20px;
     font-style: normal;
     font-weight: 500;
     text-transform: normal;
@@ -2576,7 +2576,7 @@ input:focus {
     }
 }
 .slider-height2 {
-    background-image: url(../img/hero/about_hero.png);
+    background-image: url(../images/000.jpg);
     min-height: 500px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -2623,7 +2623,7 @@ input:focus {
 }
 .slider-area .hero__caption h1 {
     text-transform: normal;
-    font-size: 96px;
+    font-size: 60px;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 26px;
@@ -2659,7 +2659,7 @@ input:focus {
     line-height: 1.6;
     font-weight: 400;
     margin-bottom: 39px;
-    color: #212025;
+    color: #f8f9fa;
     margin-bottom: 60px;
     padding-right: 50px;
 }
@@ -2687,7 +2687,7 @@ input:focus {
     }
 }
 .slide-bg {
-    background: #f0f0f2;
+    background-image: url('../images/163.jpg');
 }
 .slider-active button.slick-arrow {
     position: absolute;

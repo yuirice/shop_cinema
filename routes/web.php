@@ -3,6 +3,7 @@
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 
@@ -27,6 +28,11 @@ Route::namespace ('App\Http\Controllers')->group(function () {
     Route::post('/contacts', 'SiteController@storeContact');
     Route::get('addcart/{item}/{quantity}', 'SiteController@addCart');
     Route::get('cart', 'SiteController@cartPage');
+    Route::get('additem/{item}', 'SiteController@additem');
+    Route::get('getcart', 'SiteController@getcart');
+    Route::get('updateitem/{item}', 'SiteController@updateitem');
+    Route::get('movies_all', 'MovieController@movies_all');
+    Route::get('movie/{id}', 'MovieController@movie');
 });
 
 Route::get('picArray', function () {
@@ -61,20 +67,20 @@ Route::group(['prefix' => 'admin'], function () {
 //     return '已加入購物車中';
 // });
 
-Route::get('updateitem', function () {
-    $item = Item::find(1);
-    if (!\Cart::session(1)->isEmpty()) {
-        \Cart::session(1)->update(1, [
-            'quantity' => -3,
-            'attributes' => [],
-            'associatedModel' => $item,
-        ]);
-        return '已更新購物車';
-    } else {
-        return '購物車為空';
-    }
+// Route::get('updateitem', function () {
+//     $item = Item::find(1);
+//     if (!\Cart::session(Auth::user()->id)->isEmpty()) {
+//         \Cart::session(Auth::user()->id)->update(1, [
+//             'quantity' => -1,
+//             'attributes' => [],
+//             'associatedModel' => $item,
+//         ]);
+//         return redirect('/cart');
+//     } else {
+//         return redirect('/cart');
+//     }
 
-});
+// });
 
 Route::get('removeitem', function () {
     $item = Item::find(1);
@@ -82,10 +88,10 @@ Route::get('removeitem', function () {
     return '已移除商品';
 });
 
-Route::get('getcart', function () {
-    $items = \Cart::session(1)->getContent();
-    dd($items);
-});
+// Route::get('getcart', function () {
+//     $items = \Cart::session(1)->getContent();
+//     dd($items);
+// });
 
 Route::get('gettotalquantity', function () {
     $cartTotalQuantity = \Cart::session(1)->getTotalQuantity();
@@ -98,8 +104,9 @@ Route::get('gettotal', function () {
 });
 
 Route::get('clearcart', function () {
-    \Cart::session(1)->clear();
-    return '已清除購物車';
+    \Cart::session(Auth::user()->id)->clear();
+    // return '已清除購物車';
+    return redirect('/');
 });
 
 Route::middleware([
@@ -143,4 +150,9 @@ Route::get('/deletesession', function (Request $request) {
 
 Route::get('/feedback', function () {
     return view('feedback');
+});
+
+Route::get('logout', function () {
+    Auth::logout();
+    return redirect('/');
 });

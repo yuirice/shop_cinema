@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h2>Cart List</h2>
+                            <h2></h2>
                         </div>
                     </div>
                 </div>
@@ -23,8 +23,8 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">商品</th>
-                  <th scope="col">價格</th>
+                  <th scope="col">電影</th>
+                  <th scope="col">單價</th>
                   <th scope="col">數量</th>
                   <th scope="col">合計</th>
                 </tr>
@@ -38,7 +38,7 @@
                           <img src="{{ Voyager::image($cartitem->associatedModel->getFirstPic()) }}" alt="" />
                         </div>
                         <div class="media-body">
-                          <p>{{ $cartitem->name }}</p>
+                          <p>{{ $cartitem->title }}</p>
                         </div>
                       </div>
                     </td>
@@ -47,28 +47,32 @@
                     </td>
                     <td>
                       <div class="product_count">
-                        <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                        <input class="input-number" type="text" value="{{$cartitem->quantity}}" min="0" max="10">
-                        <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                         {{$cartitem->quantity}}
                       </div>
                     </td>
                     <td>
                       <h5>${{ $cartitem->price * $cartitem->quantity }}</h5>
                     </td>
+                    <td>
+                      <div class="checkout_btn_inner float-right">
+              <a class="btn_1" href="{{ url('/updateitem/' . $cartitem->associatedModel->id) }}">-</a>
+              <a class="btn_1 checkout_btn_1" href="{{ url('/additem/' . $cartitem->associatedModel->id) }}">+</a>
+            </div>
+                    </td>
                   </tr>
                 @endforeach
-            
+
                 <tr>
                   <td></td>
                   <td></td>
                   <td>
-                    <h5>Subtotal</h5>
+                    <h5>總計</h5>
                   </td>
                   <td>
                     <h5>${{ $total }}</h5>
                   </td>
                 </tr>
-                <tr class="shipping_area">
+                {{-- <tr class="shipping_area">
                   <td></td>
                   <td></td>
                   <td>
@@ -97,8 +101,8 @@
                       <h6>
                         Calculate Shipping
                         <i class="fa fa-caret-down" aria-hidden="true"></i>
-                      </h6>
-                      <select class="shipping_select">
+                      </h6> --}}
+                      {{-- <select class="shipping_select">
                         <option value="1">Bangladesh</option>
                         <option value="2">India</option>
                         <option value="4">Pakistan</option>
@@ -107,20 +111,20 @@
                         <option value="1">Select a State</option>
                         <option value="2">Select a State</option>
                         <option value="4">Select a State</option>
-                      </select>
-                      <input class="post_code" type="text" placeholder="Postcode/Zipcode" />
+                      </select> --}}
+                      {{-- <input class="post_code" type="text" placeholder="Postcode/Zipcode" />
                       <a class="btn_1" href="#">Update Details</a>
                     </div>
                   </td>
                 </tr>
               </tbody>
-            </table>
+            </table> --}}
             <div class="checkout_btn_inner float-right">
-              <a class="btn_1" href="#">Continue Shopping</a>
-              <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+              <a class="btn_1" href="{{ url('/clearcart') }}">取消訂票</a>
+              {{-- <a class="btn_1 checkout_btn_1" href="#">確認</a> --}}
             </div>
           </div>
         </div>
     </section>
     <!--================End Cart Area =================-->
-@endsectiont
+{{-- @endsectiont --}}
